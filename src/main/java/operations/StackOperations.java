@@ -1,7 +1,15 @@
+package operations;
+
 /**
  * Created by Ekeocha-mac on 4/19/17.
  */
 public interface StackOperations {
+
+    /**
+     * Empty operations.operationsImpl.IntegerStack Message
+     */
+    static final String INTEGER_STACK_EMPTY_MESSAGE = "The operations.operationsImpl.IntegerStack is Empty!!";
+
     /**
      * Push an item onto the Stack
      * @param item

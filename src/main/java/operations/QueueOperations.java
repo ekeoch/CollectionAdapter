@@ -1,7 +1,15 @@
+package operations;
+
 /**
  * Created by Ekeocha-mac on 4/19/17.
  */
 public interface QueueOperations {
+
+    /**
+     * Empty IntegerQueue Message
+     */
+    static final String INTEGER_QUEUE_EMPTY_MESSAGE = "The IntegerQueue is Empty!!";
+
     /**
      * Remove an element from the Queue
      * @return int
@@ -25,4 +33,17 @@ public interface QueueOperations {
      * @return int
      */
     public int peek();
+
+    /**
+     * Gets size of Queue
+     * @return
+     */
+    public int size();
+
+    /**
+     * Gets item at specified index
+     * @param index
+     * @return
+     */
+    public int get(int index);
 }

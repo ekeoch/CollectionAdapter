@@ -1,3 +1,8 @@
+package operations.operationsImpl;
+
+import operations.QueueOperations;
+import operations.utils.Utilities;
+
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
 
@@ -25,9 +30,9 @@ public class IntegerQueue implements QueueOperations {
      */
     public int dequeue() {
         try{
-            return linkedList.getFirst();
+            return linkedList.removeFirst();
         } catch (NoSuchElementException e) {
-            throw new NoSuchElementException("The IntegerQueue is Empty!!");
+            throw new NoSuchElementException(INTEGER_QUEUE_EMPTY_MESSAGE);
         }
     }
 
@@ -52,13 +57,30 @@ public class IntegerQueue implements QueueOperations {
      * @return the first item on the Queue
      */
     public int peek() {
+        if(isEmpty()) throw new NoSuchElementException(INTEGER_QUEUE_EMPTY_MESSAGE);
         return linkedList.peek();
+    }
+
+    /**
+     * Gets the size of the Queue
+     * @return  int
+     */
+    public int size(){
+       return linkedList.size();
+    }
+
+    /**
+     * Gets the item at the specified index
+     * @param index
+     * @return
+     * @throws IndexOutOfBoundsException
+     */
+    public int get(int index) throws IndexOutOfBoundsException{
+       return linkedList.get(index);
     }
 
     @Override
     public String toString() {
-        return "IntegerQueue{" +
-                "linkedList=" + linkedList +
-                '}';
+        return Utilities.queueOperationsToString(this);
     }
 }

@@ -1,3 +1,7 @@
+package operations.operationsImpl;
+
+import operations.StackOperations;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -14,10 +18,10 @@ public class IntegerStack implements StackOperations {
     /**
      * int to keep track of the current index. Initialize index at -1
      */
-    int index = -1;
+    private int index = -1;
 
     /**
-     * Initialize IntegerStack
+     * Initialize operations.operationsImpl.IntegerStack
      */
     public IntegerStack(){
         this.list = new ArrayList<Integer>();
@@ -29,27 +33,26 @@ public class IntegerStack implements StackOperations {
      */
     public void push(int item) {
         list.add(item);
-        index++;
+        ++index;
     }
 
     /**
      * retrieve item from the base list using index and decrement index
-     * @return The last item on the IntegerStack. Throws RuntimeException if empty
+     * @return The last item on the operations.operationsImpl.IntegerStack. Throws RuntimeException if empty
      * @throws NoSuchElementException
      */
     public int pop() {
-        if(index < 0) throw new NoSuchElementException("The IntegerStack is Empty!!");
-        int out = list.get(index);
-        list.remove(index);
-        index--;
-        return out;
+        if(index < 0) throw new NoSuchElementException(INTEGER_STACK_EMPTY_MESSAGE);
+        return list.remove(index--);
     }
 
     /**
      * return the value at the current index
      * @return int
+     * @throws NoSuchElementException
      */
     public int peek() {
+        if(index < 0) throw new NoSuchElementException(INTEGER_STACK_EMPTY_MESSAGE);
         return list.get(index);
     }
 
@@ -59,7 +62,27 @@ public class IntegerStack implements StackOperations {
      * @return
      */
     public boolean isEmpty() {
-        return index < 0;
+        return list.isEmpty();
+    }
+
+    /**
+     * returns the size of the stack
+     * @return
+     */
+    public int size() {
+        return list.size();
+    }
+
+    /**
+     * gets item at given index and removes it from the stack if specified,
+     * Also decreases the size of the index counter
+     * @param index
+     * @return int
+     * @throws IndexOutOfBoundsException
+     */
+    public int get(int index, boolean delete) {
+        if(!delete) return list.get(index);
+        return list.remove(index--);
     }
 
     @Override
